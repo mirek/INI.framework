@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'INI' target in the 'INI' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

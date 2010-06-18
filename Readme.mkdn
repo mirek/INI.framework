@@ -1,0 +1,38 @@
+# INI.framework
+
+Ini-style file read/write support with format preserving.
+
+## Usage
+
+Read:
+
+    NSString *path = [@"~/.gitconfig" stringByExpandingTildeInPath];
+    INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile: path];
+    NSString *token = [config valueForKey: @"token" inSection: @"github"];
+    NSString *user = [config valueForKey: @"user" inSection: @"github"];
+    NSLog(@"GitHub token %@ for user %@", token, user);
+
+    // GitHub token 9199... for user mirek
+
+Write:
+
+   config.autosave = YES;
+   [config setValue: @"mirekrusin" forKey: @"user" inSection: @"github"];
+   
+   $ cat ~/.gitconfig
+   
+   [user]
+     name = Mirek Rusin
+     email = mirek [at] me [dot] com
+   [github]
+     user = mirekrusin
+     token = 9199...
+
+## License
+
+    © 2010 Mirek Rusin, Released under the Apache License, Version 2.0
+    http://www.apache.org/licenses/LICENSE-2.0
+
+## Authors
+
+* Mirek Rusin <mirek [at] me [dot] com>
