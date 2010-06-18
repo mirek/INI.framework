@@ -16,17 +16,17 @@ Read:
 
 Write:
 
-   config.autosave = YES;
-   [config setValue: @"mirekrusin" forKey: @"user" inSection: @"github"];
+    config.autosave = YES;
+    [config setValue: @"mirekrusin" forKey: @"user" inSection: @"github"];
    
-   $ cat ~/.gitconfig
+    $ cat ~/.gitconfig
    
-   [user]
-     name = Mirek Rusin
-     email = mirek [at] me [dot] com
-   [github]
-     user = mirekrusin
-     token = 9199...
+    [user]
+      name = Mirek Rusin
+      email = mirek [at] me [dot] com
+    [github]
+      user = mirekrusin
+      token = 9199...
 
 ## License
 
