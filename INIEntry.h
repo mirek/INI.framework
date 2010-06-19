@@ -7,23 +7,30 @@
 typedef enum {
   INIEntryTypeSection,
   INIEntryTypeKeyValue,
+  INIEntryTypeComment,
   INIEntryTypeOther
 } INIEntryType;
 
+typedef struct {
+  NSRange key;
+  NSRange value;
+  NSRange section;
+} INIEntryInfo;
+
 @interface INIEntry : NSObject {
-  INIEntry *aboveEntry;
-  INIEntry *belowEntry;
-  NSMutableString *line;
+  NSString *line;
+  INIEntryInfo info;
+  INIEntryType type;
 }
 
-@property (nonatomic, retain) INIEntry *aboveEntry;
-@property (nonatomic, retain) INIEntry *belowEntry;
-@property (nonatomic, retain) NSMutableString *line;
+@property (nonatomic, retain) NSString *line;
+@property (assign) INIEntryInfo info;
+@property (assign) INIEntryType type;
 
 - (id) init;
-- (id) initWithLine: (NSString *) line aboveEntry: (INIEntry *) aboveEntry belowEntry: (INIEntry *) belowEntry;
+- (id) initWithLine: (NSString *) line;
 
-- (INIEntryType) entryType;
++ (INIEntry *) entryWithLine: (NSString *) line;
 
 - (NSString *) key;
 - (void) setKey: (NSString *) key;
@@ -32,5 +39,7 @@ typedef enum {
 - (void) setValue: (NSString *) value;
 
 - (NSString *) section;
+
+- (void) parse;
 
 @end

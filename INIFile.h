@@ -20,7 +20,12 @@
 @property (nonatomic, retain) NSMutableArray *entries;
 @property (assign, readwrite) NSString *contents;
 
-- (NSMutableArray *) sections;
+- (id) initWithUTF8ContentsOfFile: (NSString *) path error: (NSError **) error;
+- (id) initWithContentsOfFile: (NSString *) path encoding: (NSStringEncoding) encoding error: (NSError **) error;
+
+
+- (NSIndexSet *) sectionIndexes;
+- (NSArray *) sections;
 
 - (NSString *) valueForKey: (NSString *) key;
 - (NSMutableArray *) valuesForKey: (NSString *) key;

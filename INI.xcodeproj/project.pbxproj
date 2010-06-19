@@ -17,6 +17,7 @@
 		EB41D1CB11CAF4750018876A /* INIFile.h in Headers */ = {isa = PBXBuildFile; fileRef = EB41D1C711CAF4750018876A /* INIFile.h */; };
 		EB41D1CC11CAF4750018876A /* INIFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41D1C811CAF4750018876A /* INIFile.m */; };
 		EB41D1D411CAF5010018876A /* Readme.mkdn in Resources */ = {isa = PBXBuildFile; fileRef = EB41D1D311CAF5010018876A /* Readme.mkdn */; };
+		EB41D24211CCB4E80018876A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41D1B611CAF4070018876A /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB41D24211CCB4E80018876A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
