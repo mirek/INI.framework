@@ -1,4 +1,5 @@
-// © 2010 Mirek Rusin
+// Original code © 2010 Mirek Rusin
+// Modified code © 2016 Robert Corrigan
 // Released under the Apache License, Version 2.0
 // http://www.apache.org/licenses/LICENSE-2.0
 
@@ -23,7 +24,7 @@ typedef struct {
   INIEntryType type;
 }
 
-@property (nonatomic, retain) NSString *line;
+@property (nonatomic, strong) NSString *line;
 @property (assign) INIEntryInfo info;
 @property (assign) INIEntryType type;
 

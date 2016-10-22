@@ -1,0 +1,2 @@
+#Make sure our test ini files aren't altered by git
+*.ini binary
