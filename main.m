@@ -6,32 +6,39 @@
 #import "INI.h"
 
 int main(int argc, char** argv) {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  @autoreleasepool {
   
-  INIEntry *entry;
-  
-  entry = [INIEntry entryWithLine: @"  username  \t=  mirek  "];
-  for (int i = 0; i < entry.line.length; i++)
-    printf("%i", i % 10);
-  printf("\n%s\nsection: %i:%i\nkey: %i:%i\nvalue: %i:%i",
-         [entry.line UTF8String],
-         (int)entry.info.section.location, (int)entry.info.section.length,
-         (int)entry.info.key.location, (int)entry.info.key.length,
-         (int)entry.info.value.location, (int)entry.info.value.length);
-  printf("\nkey '%s' is value '%s' section '%s'\n", [entry.key UTF8String], [entry.value UTF8String], [entry.section UTF8String]);
+    INIEntry *entry;
+    
+    entry = [INIEntry entryWithLine: @"  username  \t=  mirek  "];
+    for (int i = 0; i < entry.line.length; i++)
+      printf("%i", i % 10);
+    printf("\n%s\nsection: %i:%i\nkey: %i:%i\nvalue: %i:%i",
+           [entry.line UTF8String],
+           (int)entry.info.section.location, (int)entry.info.section.length,
+           (int)entry.info.key.location, (int)entry.info.key.length,
+           (int)entry.info.value.location, (int)entry.info.value.length);
+    printf("\nkey '%s' is value '%s' section '%s'\n", [entry.key UTF8String], [entry.value UTF8String], [entry.section UTF8String]);
 
-  printf("\n");
-  entry.line = @" [section] ";
+    printf("\n");
+    entry.line = @" [section] ";
+    
+    for (int i = 0; i < entry.line.length; i++)
+      printf("%i", i % 10);
+    printf("\n%s\nsection: %i:%i\nkey: %i:%i\nvalue: %i:%i",
+           [entry.line UTF8String],
+           (int)entry.info.section.location, (int)entry.info.section.length,
+           (int)entry.info.key.location, (int)entry.info.key.length,
+           (int)entry.info.value.location, (int)entry.info.value.length);
+    printf("\nkey '%s' is value '%s' section '%s'\n", [entry.key UTF8String], [entry.value UTF8String], [entry.section UTF8String]);
+	
+    NSError *err;
+    NSString *path = [@"~/.gitconfig" stringByExpandingTildeInPath];
+    INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile: path error: &err];
+    NSString *token = [config valueForKey: @"name" inSection: @"user"];
+    NSString *user = [config valueForKey: @"email" inSection: @"user"];
+    NSLog(@"GitHub token %@ for user %@", token, user);
   
-  for (int i = 0; i < entry.line.length; i++)
-    printf("%i", i % 10);
-  printf("\n%s\nsection: %i:%i\nkey: %i:%i\nvalue: %i:%i",
-         [entry.line UTF8String],
-         (int)entry.info.section.location, (int)entry.info.section.length,
-         (int)entry.info.key.location, (int)entry.info.key.length,
-         (int)entry.info.value.location, (int)entry.info.value.length);
-  printf("\nkey '%s' is value '%s' section '%s'\n", [entry.key UTF8String], [entry.value UTF8String], [entry.section UTF8String]);
-  
-  [pool drain];
+  }
   return 0;
 }
